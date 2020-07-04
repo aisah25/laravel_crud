@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/pertanyaan/create','PertanyaansController@create');
-Route::post('/pertanyaan/{pertanyaan}','PertanyaansController@show');
+Route::post('/pertanyaan/create','PertanyaansController@create');
+// Route::post('/pertanyaan/{pertanyaan}','PertanyaansController@show');
 Route::get('/pertanyaan','PertanyaansController@index');
+Route::get('/pertanyaan/{id}/edit','PertanyaanController@edit');

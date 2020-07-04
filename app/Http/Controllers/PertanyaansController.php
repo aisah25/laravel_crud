@@ -14,8 +14,8 @@ class PertanyaansController extends Controller
      */
     public function index()
     {
-        $pertanyaans = Pertanyaan::all();
-        return view('pertanyaans.index', compact('pertanyaans'));
+        $data_pertanyaan = \App\Pertanyaan::all();
+        return view('pertanyaans.index',['data_pertanyaan'=>$data_pertanyaan]);
     }
 
     /**
@@ -23,9 +23,10 @@ class PertanyaansController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('pertanyaans.create');
+        \App\Pertanyaan::create($request->all());
+        return redirect('/pertanyaan')->with('sukses','data berhasil di input');
     }
 
     /**
@@ -36,9 +37,7 @@ class PertanyaansController extends Controller
      */
     public function store(Request $request)
     {
-        $pertanyaan = new Pertanyaan;
-        $pertanyaan->judul = $request->judul;
-        $flight->save();
+//
     }
 
     /**
@@ -58,9 +57,10 @@ class PertanyaansController extends Controller
      * @param  \App\Pertanyaan  $pertanyaan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pertanyaan $pertanyaan)
+    public function edit($id)
     {
-        //
+        $pertanyaan = \App\Pertanyaan::find($id);
+        dd($pertanyaan);
     }
 
     /**
